@@ -1,0 +1,68 @@
+# ══════════════════════════════════════════════════════
+#  DS PORTFOLIO — requirements.txt
+#  This is a pure frontend project (HTML + CSS + JS).
+#  No Python/Node installation is required to VIEW it.
+#  These entries document tools + CDN libraries used.
+# ══════════════════════════════════════════════════════
+
+# ── VS Code Extensions (install from Extensions panel) ──
+# Name: Live Server
+# ID:   ritwickdey.LiveServer
+# Use:  Right-click index.html → "Open with Live Server"
+#       Auto-reloads on every file save. No build step needed.
+
+# Name: Prettier - Code formatter (optional but recommended)
+# ID:   esbenp.prettier-vscode
+
+# Name: HTML CSS Support (optional)
+# ID:   ecmel.vscode-html-css
+
+# ── CDN Libraries loaded via <script src="..."> in HTML ──
+# These are fetched automatically from the internet when you
+# open the site. No npm install or pip install required.
+
+# Chart.js v4.4.0 — interactive charts in hero + project sections
+# URL: https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js
+
+# Google Fonts — Syne (headings) + DM Sans (body)
+# URL: https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap
+
+# ── Optional: Python local server (alternative to Live Server) ──
+# If you don't want to install the VS Code extension, you can
+# serve the site using Python's built-in HTTP server:
+#
+#   cd ds-portfolio
+#   python -m http.server 5500
+#
+# Then open: http://localhost:5500
+#
+# Python version required: 3.6+
+# No additional pip packages needed.
+
+# ── Optional: Node.js / npm tools (if you want to extend later) ──
+# node >= 18.0.0          (for build tools like Vite or Webpack)
+# npm install -g live-server   (alternative CLI live server)
+
+# ── Project File Structure ──
+# ds-portfolio/
+# ├── index.html           ← main page
+# ├── requirements.txt     ← this file
+# ├── css/
+# │   └── styles.css       ← all styles
+# ├── js/
+# │   └── main.js          ← all interactivity + charts
+# └── assets/
+#     ├── images/          ← add your profile photo here
+#     │   └── profile.jpg  (optional — currently uses initials avatar)
+#     └── resume.pdf       ← replace with your actual resume PDF
+
+# ── Customisation checklist ──
+# [ ] Replace "Alex Morgan" with your name (index.html, line 6, navbar, footer)
+# [ ] Update hero tagline, about text, and contact details
+# [ ] Add your actual GitHub, LinkedIn, Kaggle, Twitter links
+# [ ] Drop your resume PDF into assets/resume.pdf
+# [ ] Replace placeholder project descriptions with your real projects
+# [ ] Update tech stack chips in About and Skills sections
+# [ ] Add a real profile photo: assets/images/profile.jpg
+#     Then replace the .about-avatar div in index.html with:
+#     <img src="assets/images/profile.jpg" alt="Your Name" style="width:120px;height:120px;border-radius:50%;object-fit:cover;">
