@@ -19,7 +19,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
 });
 
 /* ── Tab-style page switching ──
-   The site opens directly on the About section (About / Projects / Blogs)
+   The site opens directly on the About section (About / Projects / Blogs / SLMs)
    as its own full "page" instead of one continuous scrolling page. */
 function showTab(id) {
   const target = document.getElementById(id);
@@ -62,6 +62,84 @@ function initTabLinks() {
         navLinks.classList.remove('open');
       });
     }
+  });
+}
+
+/* ── Blogs (loaded from data/blogs.json — no post content in index.html) ──
+   Each entry: { id, title, thumbnail, body }. `body` is the full post
+   content (plain text and/or simple HTML like <p>, <img>, <strong>) —
+   written and hosted entirely on this site, nothing links out externally.
+   Cards are rendered as floating, clickable thumbnails; clicking one opens
+   the full post in an in-page reader panel. If the file is missing, empty,
+   or can't be fetched (e.g. opening index.html directly instead of via a
+   local server), the existing "No articles yet" empty state is shown. */
+let blogPosts = [];
+
+async function initBlogs() {
+  const grid = document.getElementById('blogsGrid');
+  const empty = document.getElementById('blogsEmpty');
+  if (!grid || !empty) return;
+
+  try {
+    const res = await fetch('data/blogs.json');
+    if (res.ok) blogPosts = await res.json();
+  } catch (err) {
+    console.warn('Could not load data/blogs.json (serve the site over http:// for this to work):', err);
+  }
+
+  if (!Array.isArray(blogPosts) || blogPosts.length === 0) {
+    grid.style.display = 'none';
+    empty.style.display = '';
+    return;
+  }
+
+  empty.style.display = 'none';
+  grid.style.display = '';
+  grid.innerHTML = blogPosts.map((post, i) => `
+    <button type="button" class="blog-float-card fade-up" data-blog-index="${i}">
+      <div class="blog-float-thumb">
+        <img src="${post.thumbnail}" alt="${post.title}" loading="lazy"/>
+      </div>
+      <span class="blog-float-title">${post.title}</span>
+    </button>
+  `).join('');
+
+  grid.querySelectorAll('.blog-float-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const post = blogPosts[Number(card.dataset.blogIndex)];
+      if (post) openBlogPost(post);
+    });
+  });
+}
+
+function openBlogPost(post) {
+  const reader = document.getElementById('blogReader');
+  const title = document.getElementById('blogReaderTitle');
+  const body = document.getElementById('blogReaderBody');
+  if (!reader || !title || !body) return;
+
+  title.textContent = post.title;
+  body.innerHTML = post.body || '';
+  reader.classList.add('open');
+  reader.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeBlogPost() {
+  const reader = document.getElementById('blogReader');
+  if (!reader) return;
+  reader.classList.remove('open');
+  reader.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+function initBlogReader() {
+  const closeBtn = document.getElementById('blogReaderClose');
+  const backdrop = document.getElementById('blogReaderBackdrop');
+  if (closeBtn) closeBtn.addEventListener('click', closeBlogPost);
+  if (backdrop) backdrop.addEventListener('click', closeBlogPost);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeBlogPost();
   });
 }
 
@@ -149,5 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initExperienceYears();
   initProjectChart();
   initContactForm();
+  initBlogs();
+  initBlogReader();
   showTab('about');
 });

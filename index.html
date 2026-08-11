@@ -26,6 +26,7 @@
           <li><a href="#about" class="nav-link active">About</a></li>
           <li><a href="#projects" class="nav-link">Projects</a></li>
           <li><a href="#blogs" class="nav-link">Blogs</a></li>
+          <li><a href="#slms" class="nav-link">SLMs</a></li>
         </ul>
         <div class="nav-social">
           <a href="https://github.com/karanoberoi28" target="_blank" class="social-icon-link" aria-label="GitHub">
@@ -252,10 +253,40 @@
         <h2 class="section-title">Blogs</h2>
         <p class="section-sub">Thoughts and write-ups on data science, causal AI, and aviation analytics.</p>
       </div>
-      <div class="blogs-empty">
-        <span class="blogs-empty-icon">✍️</span>
+      <!-- Populated at runtime from data/blogs.json — see js/main.js:initBlogs() -->
+      <div class="blogs-grid" id="blogsGrid"></div>
+      <div class="empty-state" id="blogsEmpty">
+        <span class="empty-state-icon">✍️</span>
         <h3>No articles yet</h3>
         <p>I'm working on my first posts — check back soon.</p>
+      </div>
+    </div>
+
+    <!-- Full-post reader — opens in-page when a blog thumbnail is clicked.
+         Content is injected from data/blogs.json (see js/main.js:openBlogPost()). -->
+    <div class="blog-reader" id="blogReader" aria-hidden="true">
+      <div class="blog-reader-backdrop" id="blogReaderBackdrop"></div>
+      <div class="blog-reader-panel" role="dialog" aria-modal="true" aria-labelledby="blogReaderTitle">
+        <button class="blog-reader-close" id="blogReaderClose" aria-label="Close article">✕</button>
+        <div class="blog-reader-content">
+          <h2 id="blogReaderTitle"></h2>
+          <div id="blogReaderBody"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────── SLMs ───────────── -->
+  <section class="slms tab-content" id="slms">
+    <div class="container">
+      <div class="section-header centered">
+        <span class="section-tag">Small Language Models</span>
+        <h2 class="section-title">SLMs</h2>
+      </div>
+      <div class="empty-state">
+        <span class="empty-state-icon">🧩</span>
+        <h3>Coming soon</h3>
+        <p>This section is under construction — check back soon.</p>
       </div>
     </div>
   </section>
