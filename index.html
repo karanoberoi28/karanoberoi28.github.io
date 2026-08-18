@@ -146,101 +146,12 @@
     <div class="container">
       <div class="section-header centered">
         <span class="section-tag">Portfolio</span>
-        <h2 class="section-title">Featured Projects</h2>
         <p class="section-sub">A selection of end-to-end data science projects — from notebooks to production.</p>
       </div>
-      <div class="projects-grid">
-
-        <div class="project-card featured">
-          <div class="project-top">
-            <span class="project-tag">NLP</span>
-            <div class="project-links">
-              <a href="https://github.com" target="_blank" title="GitHub">⇗ GitHub</a>
-              <a href="https://kaggle.com" target="_blank" title="Demo">⇗ Demo</a>
-            </div>
-          </div>
-          <h3>Sentiment Analysis Engine</h3>
-          <p>Fine-tuned BERT model for real-time customer review classification across 5 sentiment classes. Deployed as a REST API on AWS Lambda.</p>
-          <div class="project-chart-mini">
-            <canvas id="projectChart1" height="80"></canvas>
-          </div>
-          <div class="project-tech">
-            <span>PyTorch</span><span>Transformers</span><span>FastAPI</span><span>AWS</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-top">
-            <span class="project-tag">Forecasting</span>
-            <div class="project-links">
-              <a href="https://github.com" target="_blank">⇗ GitHub</a>
-            </div>
-          </div>
-          <h3>Sales Forecasting Dashboard</h3>
-          <p>Time-series forecasting using Prophet and LSTM for a retail chain, reducing inventory cost by 18%. Interactive Plotly Dash frontend.</p>
-          <div class="project-tech">
-            <span>Prophet</span><span>LSTM</span><span>Pandas</span><span>Dash</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-top">
-            <span class="project-tag">Computer Vision</span>
-            <div class="project-links">
-              <a href="https://github.com" target="_blank">⇗ GitHub</a>
-              <a href="#" target="_blank">⇗ Demo</a>
-            </div>
-          </div>
-          <h3>Medical Image Classifier</h3>
-          <p>CNN-based X-ray classification for pneumonia detection with 94% accuracy. Trained on NIH Chest X-ray dataset with custom augmentation pipeline.</p>
-          <div class="project-tech">
-            <span>TensorFlow</span><span>OpenCV</span><span>Keras</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-top">
-            <span class="project-tag">Recommender</span>
-            <div class="project-links">
-              <a href="https://github.com" target="_blank">⇗ GitHub</a>
-            </div>
-          </div>
-          <h3>Movie Recommender System</h3>
-          <p>Collaborative filtering + content-based hybrid recommender using matrix factorization. Evaluated on MovieLens 25M dataset.</p>
-          <div class="project-tech">
-            <span>scikit-learn</span><span>Surprise</span><span>Flask</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-top">
-            <span class="project-tag">EDA</span>
-            <div class="project-links">
-              <a href="https://github.com" target="_blank">⇗ GitHub</a>
-              <a href="https://kaggle.com" target="_blank">⇗ Notebook</a>
-            </div>
-          </div>
-          <h3>COVID-19 Data Explorer</h3>
-          <p>Interactive geospatial and time-series analysis of global pandemic data. Used Plotly, GeoPandas, and Streamlit for the live dashboard.</p>
-          <div class="project-tech">
-            <span>GeoPandas</span><span>Plotly</span><span>Streamlit</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-top">
-            <span class="project-tag">MLOps</span>
-            <div class="project-links">
-              <a href="https://github.com" target="_blank">⇗ GitHub</a>
-            </div>
-          </div>
-          <h3>ML Pipeline Orchestrator</h3>
-          <p>End-to-end MLOps pipeline with automated retraining, model registry, A/B testing, and drift detection using MLflow and DVC.</p>
-          <div class="project-tech">
-            <span>MLflow</span><span>DVC</span><span>Docker</span><span>Airflow</span>
-          </div>
-        </div>
-
+      <div class="empty-state">
+        <span class="empty-state-icon">🛠️</span>
+        <h3>Nothing here yet</h3>
+        <p>This section is being rebuilt — check back soon.</p>
       </div>
     </div>
   </section>
@@ -250,7 +161,6 @@
     <div class="container">
       <div class="section-header centered">
         <span class="section-tag">Writing</span>
-        <h2 class="section-title">Blogs</h2>
         <p class="section-sub">Thoughts and write-ups on data science, causal AI, and aviation analytics.</p>
       </div>
       <!-- Populated at runtime from data/blogs.json — see js/main.js:initBlogs() -->
@@ -279,14 +189,60 @@
   <!-- ───────────── SLMs ───────────── -->
   <section class="slms tab-content" id="slms">
     <div class="container">
-      <div class="section-header centered">
-        <span class="section-tag">Small Language Models</span>
-        <h2 class="section-title">SLMs</h2>
+      <div class="subtabs" id="slmSubtabs" role="tablist">
+        <button type="button" class="subtab-link active" data-subtab="slm-fundamentals" role="tab" aria-selected="true">Fundamentals</button>
+        <button type="button" class="subtab-link" data-subtab="slm-benchmarks" role="tab" aria-selected="false">Benchmarks</button>
+        <button type="button" class="subtab-link" data-subtab="slm-training" role="tab" aria-selected="false">Resources</button>
+        <button type="button" class="subtab-link" data-subtab="slm-edge-deployment" role="tab" aria-selected="false">Projects</button>
+        <button type="button" class="subtab-link" data-subtab="slm-projects" role="tab" aria-selected="false">Edge Deployment</button>
       </div>
-      <div class="empty-state">
-        <span class="empty-state-icon">🧩</span>
-        <h3>Coming soon</h3>
-        <p>This section is under construction — check back soon.</p>
+
+      <div class="subtab-content active" id="slm-fundamentals" role="tabpanel">
+        <div class="empty-state">
+          <span class="empty-state-icon">🧩</span>
+          <h3>Coming soon</h3>
+          <p>This section is under construction — check back soon.</p>
+        </div>
+      </div>
+
+      <div class="subtab-content" id="slm-benchmarks" role="tabpanel">
+        <div class="empty-state">
+          <span class="empty-state-icon">📊</span>
+          <h3>Coming soon</h3>
+          <p>This section is under construction — check back soon.</p>
+        </div>
+      </div>
+
+      <div class="subtab-content" id="slm-training" role="tabpanel">
+        <div class="empty-state">
+          <span class="empty-state-icon">🏋️</span>
+          <h3>Coming soon</h3>
+          <p>This section is under construction — check back soon.</p>
+        </div>
+      </div>
+
+      <div class="subtab-content" id="slm-edge-deployment" role="tabpanel">
+        <div class="empty-state">
+          <span class="empty-state-icon">📡</span>
+          <h3>Coming soon</h3>
+          <p>This section is under construction — check back soon.</p>
+        </div>
+      </div>
+
+      <div class="subtab-content" id="slm-resources" role="tabpanel">
+        <div class="empty-state">
+          <span class="empty-state-icon">📚</span>
+          <h3>Coming soon</h3>
+          <p>This section is under construction — check back soon.</p>
+        </div>
+      </div>
+
+      <div class="subtab-content" id="slm-projects" role="tabpanel">
+        <div class="empty-state">
+          <span class="empty-state-icon">🛠️</span>
+          <h3>Coming soon</h3>
+          <p>This section is under construction — check back soon.</p>
+        </div>
       </div>
     </div>
   </section>

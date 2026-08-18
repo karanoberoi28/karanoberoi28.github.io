@@ -279,7 +279,7 @@ strong { font-weight: 600; color: var(--ink); }
 ══════════════════════════════════════ */
 .about {
   padding: 6rem 0;
-  padding-top: calc(6rem + 62px);
+  padding-top: calc(2.5rem + 62px);
   background: var(--bg-2);
   border-top: 1px solid var(--border-light);
   border-bottom: 1px solid var(--border-light);
@@ -350,7 +350,7 @@ strong { font-weight: 600; color: var(--ink); }
 ══════════════════════════════════════ */
 .projects {
   padding: 6rem 0;
-  padding-top: calc(6rem + 62px);
+  padding-top: calc(2.5rem + 62px);
   background: var(--bg-2);
   border-top: 1px solid var(--border-light);
   border-bottom: 1px solid var(--border-light);
@@ -509,7 +509,7 @@ strong { font-weight: 600; color: var(--ink); }
 ══════════════════════════════════════ */
 .blogs {
   padding: 6rem 0;
-  padding-top: calc(6rem + 62px);
+  padding-top: calc(2.5rem + 62px);
   background: var(--bg);
 }
 
@@ -659,9 +659,43 @@ strong { font-weight: 600; color: var(--ink); }
 ══════════════════════════════════════ */
 .slms {
   padding: 6rem 0;
-  padding-top: calc(6rem + 62px);
+  padding-top: calc(2.5rem + 62px);
   background: var(--bg);
 }
+
+.subtabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0 0 2.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.25rem;
+}
+.subtab-link {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink-3);
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  cursor: pointer;
+  transition: color 0.18s, background 0.18s, border-color 0.18s;
+}
+.subtab-link:hover {
+  color: var(--ink);
+  border-color: var(--muted);
+}
+.subtab-link.active {
+  color: var(--bg);
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.subtab-content { display: none; }
+.subtab-content.active { display: block; }
 
 /* ══════════════════════════════════════
    TESTIMONIALS

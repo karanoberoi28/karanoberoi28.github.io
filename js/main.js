@@ -143,6 +143,25 @@ function initBlogReader() {
   });
 }
 
+/* ── SLM sub-tabs (Fundamentals / Benchmarks / Training / Edge Deployment / Resources / Projects) ── */
+function initSlmSubtabs() {
+  const nav = document.getElementById('slmSubtabs');
+  if (!nav) return;
+  const links = nav.querySelectorAll('.subtab-link');
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      const targetId = link.dataset.subtab;
+      links.forEach(l => {
+        l.classList.toggle('active', l === link);
+        l.setAttribute('aria-selected', l === link ? 'true' : 'false');
+      });
+      document.querySelectorAll('#slms .subtab-content').forEach(panel => {
+        panel.classList.toggle('active', panel.id === targetId);
+      });
+    });
+  });
+}
+
 /* ── Fade-up markers ──
    Each tab reveals its own fade-up elements when it becomes active
    — see showTab() above. This just tags the elements. */
@@ -229,5 +248,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initBlogs();
   initBlogReader();
+  initSlmSubtabs();
   showTab('about');
 });
