@@ -697,6 +697,65 @@ strong { font-weight: 600; color: var(--ink); }
 .subtab-content { display: none; }
 .subtab-content.active { display: block; }
 
+/* ── SLM Architecture content (loaded from data/slm-architecture.json) ── */
+.slm-arch {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.slm-arch-intro p { font-size: 1.03rem; color: var(--ink-3); margin-bottom: 1rem; }
+.slm-arch-intro p:last-child { margin-bottom: 0; }
+
+.slm-arch-section {
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border-light);
+}
+.slm-arch-section:first-of-type { padding-top: 0; border-top: none; }
+.slm-arch-section h3 {
+  font-family: var(--font-head);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.9rem;
+}
+.slm-arch-section p { font-size: 0.98rem; color: var(--ink-3); margin-bottom: 1rem; }
+.slm-arch-section p:last-child { margin-bottom: 0; }
+.slm-arch-section strong { color: var(--ink); }
+.slm-arch-section ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin: 1rem 0; }
+.slm-arch-section ul li {
+  position: relative;
+  padding-left: 1.3rem;
+  font-size: 0.95rem;
+  color: var(--ink-3);
+  line-height: 1.7;
+}
+.slm-arch-section ul li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.55rem;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.slm-arch-section ul li strong { color: var(--ink); }
+
+.slm-arch-diagram {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+}
+.slm-arch-diagram img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-width: 480px;
+}
+
 /* ══════════════════════════════════════
    TESTIMONIALS
 ══════════════════════════════════════ */

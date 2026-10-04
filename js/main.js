@@ -143,6 +143,65 @@ function initBlogReader() {
   });
 }
 
+/* ── SLM content loader (shared by Overview + Architecture sub-tabs) ──
+   Each JSON file has an optional `intro` and a `sections` array of
+   { heading, body, diagram, diagram_alt }. `body` is simple HTML
+   (<p>, <strong>, <em>, <ul>/<li>), and `diagram` is a path to an inline
+   SVG flowchart hosted on this site. If the file is missing, empty, or
+   can't be fetched (e.g. opening index.html directly instead of via a
+   local server), the matching "Coming soon" empty state is shown. */
+async function loadSlmSection(jsonPath, contentId, emptyId) {
+  const wrap = document.getElementById(contentId);
+  const empty = document.getElementById(emptyId);
+  if (!wrap || !empty) return;
+
+  let data = null;
+  try {
+    const res = await fetch(jsonPath);
+    if (res.ok) data = await res.json();
+  } catch (err) {
+    console.warn(`Could not load ${jsonPath} (serve the site over http:// for this to work):`, err);
+  }
+
+  if (!data || !Array.isArray(data.sections) || data.sections.length === 0) {
+    wrap.style.display = 'none';
+    empty.style.display = '';
+    return;
+  }
+
+  empty.style.display = 'none';
+  wrap.style.display = '';
+
+  const introHtml = data.intro ? `<div class="slm-arch-intro fade-up">${data.intro}</div>` : '';
+  const sectionsHtml = data.sections.map(section => `
+    <div class="slm-arch-section fade-up">
+      <h3>${section.heading || ''}</h3>
+      ${section.body || ''}
+      ${section.diagram ? `
+        <div class="slm-arch-diagram">
+          <img src="${section.diagram}" alt="${section.diagram_alt || section.heading || 'Diagram'}" loading="lazy"/>
+        </div>
+      ` : ''}
+    </div>
+  `).join('');
+
+  wrap.innerHTML = introHtml + sectionsHtml;
+
+  requestAnimationFrame(() => {
+    wrap.querySelectorAll('.fade-up').forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), i * 60);
+    });
+  });
+}
+
+function initSlmOverview() {
+  return loadSlmSection('data/slm-overview.json', 'slmOverviewContent', 'slmOverviewEmpty');
+}
+
+function initSlmArchitecture() {
+  return loadSlmSection('data/slm-architecture.json', 'slmArchContent', 'slmArchEmpty');
+}
+
 /* ── SLM sub-tabs (Fundamentals / Benchmarks / Training / Edge Deployment / Resources / Projects) ── */
 function initSlmSubtabs() {
   const nav = document.getElementById('slmSubtabs');
@@ -249,5 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBlogs();
   initBlogReader();
   initSlmSubtabs();
+  initSlmOverview();
+  initSlmArchitecture();
   showTab('about');
 });

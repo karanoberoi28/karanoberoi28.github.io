@@ -161,7 +161,7 @@
     <div class="container">
       <div class="section-header centered">
         <span class="section-tag">Writing</span>
-        <p class="section-sub">Thoughts and write-ups on Data Science, Causal AI, and Aviation Analytics.</p>
+        <p class="section-sub">Thoughts and write-ups on data science, causal AI, and aviation analytics.</p>
       </div>
       <!-- Populated at runtime from data/blogs.json — see js/main.js:initBlogs() -->
       <div class="blogs-grid" id="blogsGrid"></div>
@@ -190,15 +190,28 @@
   <section class="slms tab-content" id="slms">
     <div class="container">
       <div class="subtabs" id="slmSubtabs" role="tablist">
-        <button type="button" class="subtab-link active" data-subtab="slm-fundamentals" role="tab" aria-selected="true">Fundamentals</button>
+        <button type="button" class="subtab-link active" data-subtab="slm-overview" role="tab" aria-selected="true">Overview</button>
+        <button type="button" class="subtab-link" data-subtab="slm-architecture" role="tab" aria-selected="false">Architecture</button>
         <button type="button" class="subtab-link" data-subtab="slm-benchmarks" role="tab" aria-selected="false">Benchmarks</button>
         <button type="button" class="subtab-link" data-subtab="slm-training" role="tab" aria-selected="false">Resources</button>
         <button type="button" class="subtab-link" data-subtab="slm-edge-deployment" role="tab" aria-selected="false">Projects</button>
         <button type="button" class="subtab-link" data-subtab="slm-projects" role="tab" aria-selected="false">Edge Deployment</button>
       </div>
 
-      <div class="subtab-content active" id="slm-fundamentals" role="tabpanel">
-        <div class="empty-state">
+      <div class="subtab-content active" id="slm-overview" role="tabpanel">
+        <!-- Populated at runtime from data/slm-overview.json — see js/main.js:initSlmOverview() -->
+        <div class="slm-arch" id="slmOverviewContent"></div>
+        <div class="empty-state" id="slmOverviewEmpty">
+          <span class="empty-state-icon">🔎</span>
+          <h3>Coming soon</h3>
+          <p>This section is under construction — check back soon.</p>
+        </div>
+      </div>
+
+      <div class="subtab-content" id="slm-architecture" role="tabpanel">
+        <!-- Populated at runtime from data/slm-architecture.json — see js/main.js:initSlmArchitecture() -->
+        <div class="slm-arch" id="slmArchContent"></div>
+        <div class="empty-state" id="slmArchEmpty">
           <span class="empty-state-icon">🧩</span>
           <h3>Coming soon</h3>
           <p>This section is under construction — check back soon.</p>
